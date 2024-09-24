@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bullshit Translator</title>
+    <script src="popup.js"></script>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        min-width: 400px;
+        max-width: 400px;
+        width: 100%;
+        background-color: #f9f9f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        text-align: center;
+      }
+      .logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 50%; /* Added rounded corners */
+      }
+      h1 {
+        color: #000; /* Changed color to black */
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      ol {
+        margin-top: 20px;
+        padding-left: 20px;
+        text-align: left;
+      }
+      ol li {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="icons/icon128.png" alt="Logo" class="logo" />
+      <h1>Bullshit Translator</h1>
+      <ol>
+        <li><strong>Select</strong> the text you want to translate.</li>
+        <li><strong>Right-click</strong> on the selected text.</li>
+        <li><strong>Click</strong> on "Translate Bullshit" from the context menu.</li>
+      </ol>
+    </div>
+  </body>
+</html>
