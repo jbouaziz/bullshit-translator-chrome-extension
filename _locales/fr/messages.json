@@ -1,0 +1,38 @@
+{
+  "extensionName": {
+    "message": "Traducteur de Bullshit"
+  },
+  "extensionDescription": {
+    "message": "Traduisez le jargon, les mots à la mode et autres textes confus en langage clair."
+  },
+  "contextMenuTitle": {
+    "message": "Traduire le Bullshit"
+  },
+  "popupTitle": {
+    "message": "Traducteur de Bullshit"
+  },
+  "popupInstructions": {
+    "message": "<li><strong>Rapide :</strong> Sélectionnez le texte sur la page puis cliquez sur le bouton ci-dessous</li><li><strong>Précis :</strong><ol><li>Sélectionnez le texte sur la page</li><li>Faites un clic droit sur la sélection</li><li>Choisissez \"Traduire le Bullshit\"</li></ol></li>"
+  },
+  "popupButton": {
+    "message": "Traduire la Sélection"
+  },
+  "alertNoSelection": {
+    "message": "Veuillez sélectionner du texte sur la page avant de traiter."
+  },
+  "alertLoading": {
+    "message": "Chargement..."
+  },
+  "resultModalTitle": {
+    "message": "Traduction Sans Bullshit"
+  },
+  "resultModalLeftPanelTitle": {
+    "message": "Contenu Bullshit"
+  },
+  "resultModalRightPanelTitle": {
+    "message": "La Vérité"
+  },
+  "popupChooseMethod": {
+    "message": "Choisissez une méthode :"
+  }
+}

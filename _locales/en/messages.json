@@ -1,0 +1,38 @@
+{
+  "extensionName": {
+    "message": "Bullshit Translator"
+  },
+  "extensionDescription": {
+    "message": "Translate jargon, buzzwords, and other confusing text into plain language."
+  },
+  "contextMenuTitle": {
+    "message": "Translate Bullshit"
+  },
+  "popupTitle": {
+    "message": "Bullshit Translator"
+  },
+  "popupInstructions": {
+    "message": "<li><strong>Quick:</strong> Click the button below</li><li><strong>Precise:</strong><ol><li>Select text on page</li><li>Right-click selection</li><li>Choose \"Translate Bullshit\"</li></ol></li>"
+  },
+  "popupButton": {
+    "message": "Translate Selected Text"
+  },
+  "alertNoSelection": {
+    "message": "Please select some text on the page before processing."
+  },
+  "alertLoading": {
+    "message": "Loading..."
+  },
+  "resultModalTitle": {
+    "message": "Translated Bullshit"
+  },
+  "resultModalLeftPanelTitle": {
+    "message": "Bullshit Content"
+  },
+  "resultModalRightPanelTitle": {
+    "message": "Truth"
+  },
+  "popupChooseMethod": {
+    "message": "Choose one method:"
+  }
+}

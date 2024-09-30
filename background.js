@@ -1,7 +1,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "translateBullshit",
-    title: "Translate Bullshit",
+    title: chrome.i18n.getMessage("contextMenuTitle"),
     contexts: ["selection"],
   });
 });
@@ -18,10 +18,13 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 async function translateBullshit(selection) {
   if (!selection) {
-    alert("Please select some text on the page before processing.");
+    let message = chrome.i18n.getMessage("alertNoSelection");
+    alert(message);
+    // window.showBullshitTranslatorModal(message, message);
     return;
   }
 
+  window.showBullshitTranslatorModal(selection, chrome.i18n.getMessage("alertLoading"));
   const response = await fetch("https://bullshit-translator-api.vercel.app/translate", {
     method: "POST",
     headers: {
@@ -33,5 +36,5 @@ async function translateBullshit(selection) {
   });
 
   const result = await response.json();
-  alert(result.translation);
+  window.showBullshitTranslatorModal(selection, result.translation);
 }

@@ -11,7 +11,7 @@
         min-width: 400px;
         max-width: 400px;
         width: 100%;
-        background-color: #f9f9f9;
+        background-color: #fff;
         color: #333;
         display: flex;
         justify-content: center;
@@ -19,21 +19,17 @@
         height: 100vh;
       }
       .container {
-        border: 1px solid #ddd;
-        border-radius: 8px;
         padding: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         background-color: #fff;
         text-align: center;
       }
       .logo {
-        width: 100px;
+        width: 72px;
         height: auto;
         margin-bottom: 20px;
-        border-radius: 50%; /* Added rounded corners */
       }
       h1 {
-        color: #000; /* Changed color to black */
+        color: #0c056d; /* Steel blue color for title */
         font-size: 24px;
         margin-bottom: 20px;
       }
@@ -46,17 +42,36 @@
         margin-bottom: 10px;
         font-size: 16px;
       }
+      strong {
+        color: #0c056d; /* Steel blue color for emphasized text */
+      }
+      #processPage {
+        background-color: #0c056d; /* Steel blue background for button */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+      }
+      #processPage:hover {
+        background-color: #080444; /* Darker blue on hover */
+      }
+      ol ol {
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <img src="icons/icon128.png" alt="Logo" class="logo" />
-      <h1>Bullshit Translator</h1>
-      <ol>
-        <li><strong>Select</strong> the text you want to translate.</li>
-        <li><strong>Right-click</strong> on the selected text.</li>
-        <li><strong>Click</strong> on "Translate Bullshit" from the context menu.</li>
-      </ol>
+      <img src="icons/icon.svg" alt="Logo" class="logo" />
+      <h1 id="popupTitle"></h1>
+      <p id="popupChooseMethod"></p>
+      <ol id="popupInstructions"></ol>
+      <button id="processPage"></button>
     </div>
   </body>
 </html>

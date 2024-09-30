@@ -7,19 +7,29 @@ document.addEventListener("DOMContentLoaded", () => {
           target: { tabId: tabs[0].id },
           function: processPageContent,
         });
+        // Close the popup after initiating the script
+        window.close();
       });
     });
   }
+
+  document.getElementById("popupTitle").textContent = chrome.i18n.getMessage("popupTitle");
+  document.getElementById("popupInstructions").innerHTML =
+    chrome.i18n.getMessage("popupInstructions");
+  document.getElementById("processPage").textContent = chrome.i18n.getMessage("popupButton");
+  document.getElementById("popupChooseMethod").textContent =
+    chrome.i18n.getMessage("popupChooseMethod");
 });
 
 async function processPageContent() {
   const selection = window.getSelection().toString();
 
   if (!selection) {
-    alert("Please select some text on the page before processing.");
+    alert(chrome.i18n.getMessage("alertNoSelection"));
     return;
   }
 
+  window.showBullshitTranslatorModal(selection, chrome.i18n.getMessage("alertLoading"));
   const response = await fetch("https://bullshit-translator-api.vercel.app/translate", {
     method: "POST",
     headers: {
@@ -31,5 +41,5 @@ async function processPageContent() {
   });
 
   const result = await response.json();
-  alert(result.translation);
+  window.showBullshitTranslatorModal(selection, result.translation);
 }
