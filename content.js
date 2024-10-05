@@ -1,3 +1,71 @@
+/**
+ * Processes the selected text on the page for bullshit translation.
+ * This function performs the following steps:
+ * 1. Retrieves the selected text from the current window.
+ * 2. Checks if there's a valid selection, alerting the user if not.
+ * 3. Shows a loading modal while processing.
+ * 4. Sends the selected text to the translation API.
+ * 5. Displays the translated result in a modal.
+ *
+ * @async
+ * @function processBullshitContent
+ * @returns {Promise<void>}
+ */
+
+async function processBullshitContent() {
+  const selection = window.getSelection().toString();
+
+  if (!selection) {
+    alert(chrome.i18n.getMessage("alertNoSelection"));
+    return;
+  }
+
+  window.showBullshitTranslatorModal(selection, chrome.i18n.getMessage("alertLoading"));
+
+  // Disable the translate button
+  const translateButton = document.querySelector("#bullshit-translator-translate-button");
+  if (translateButton) {
+    translateButton.disabled = true;
+    translateButton.style.backgroundColor = "#cccccc";
+    translateButton.style.cursor = "not-allowed";
+  }
+
+  try {
+    const response = await fetch("https://bullshit-translator-api.vercel.app/translate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: selection,
+      }),
+    });
+
+    const result = await response.json();
+    window.showBullshitTranslatorModal(selection, result.translation);
+  } finally {
+    // Re-enable the translate button
+    if (translateButton) {
+      translateButton.disabled = false;
+      translateButton.style.backgroundColor = "#1a73e8";
+      translateButton.style.cursor = "pointer";
+    }
+  }
+}
+
+// Export the function to be used globally
+window.processBullshitContent = processBullshitContent;
+
+/**
+ * Displays a modal with the translated bullshit content.
+ * This function creates a modal with a header, content, and a button to translate the bullshit content.
+ * It also handles the translation process and displays the result in the modal.
+ *
+ * @function showModal
+ * @param {string} before - The original bullshit content.
+ * @param {string} translation - The translated content.
+ * @returns {void}
+ */
 function showModal(before, translation) {
   // Remove existing modal if it exists
   const existingModal = document.getElementById("bullshit-translator-modal");
@@ -81,6 +149,36 @@ function showModal(before, translation) {
   const leftPanel = createPanel(chrome.i18n.getMessage("resultModalLeftPanelTitle"), before);
   const rightPanel = createPanel(chrome.i18n.getMessage("resultModalRightPanelTitle"), translation);
 
+  // Create the "Translate Bullshit" button
+  const translateButton = document.createElement("button");
+  translateButton.id = "bullshit-translator-translate-button";
+  translateButton.textContent = chrome.i18n.getMessage("translateButton");
+  translateButton.style.marginTop = "16px";
+  translateButton.style.padding = "8px 16px";
+  translateButton.style.backgroundColor = "#1a73e8";
+  translateButton.style.color = "#ffffff";
+  translateButton.style.border = "none";
+  translateButton.style.borderRadius = "4px";
+  translateButton.style.cursor = "pointer";
+  translateButton.style.fontSize = "14px";
+  translateButton.style.fontWeight = "bold";
+  translateButton.style.width = "calc(100% - 16px)";
+
+  // Add hover effect
+  translateButton.onmouseover = () => {
+    if (!translateButton.disabled) {
+      translateButton.style.backgroundColor = "#1565c0";
+    }
+  };
+  translateButton.onmouseout = () => {
+    if (!translateButton.disabled) {
+      translateButton.style.backgroundColor = "#1a73e8";
+    }
+  };
+
+  // Add the button directly into the left panel
+  leftPanel.appendChild(translateButton);
+
   content.appendChild(leftPanel);
   content.appendChild(rightPanel);
 
@@ -114,10 +212,12 @@ function showModal(before, translation) {
     textArea.style.fontSize = "14px";
     textArea.style.lineHeight = "1.5";
     textArea.readOnly = true;
+    textArea.style.backgroundColor = "#ffffff"; // Light background for all text areas
+    textArea.style.color = "#333333"; // Dark text color for contrast
 
     // Apply grayish background to the right panel content
     if (label === chrome.i18n.getMessage("resultModalRightPanelTitle")) {
-      textArea.style.backgroundColor = "#f5f5f5";
+      textArea.style.backgroundColor = "#f8f8f8";
     }
 
     panel.appendChild(labelElement);
@@ -125,6 +225,11 @@ function showModal(before, translation) {
 
     return panel;
   }
+
+  translateButton.onclick = async () => {
+    const textToTranslate = leftPanel.querySelector("textarea").value;
+    await window.processBullshitContent(textToTranslate);
+  };
 }
 
 // Expose the function to be callable from the background script

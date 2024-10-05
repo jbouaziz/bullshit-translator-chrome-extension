@@ -3,7 +3,7 @@
     "message": "Traducteur de Bullshit"
   },
   "extensionDescription": {
-    "message": "Traduisez le jargon, les mots à la mode et autres textes confus en langage clair."
+    "message": "Traduis les textes hyper marketing ou générés par IA pour révéler ce qui est vraiment dit. ✂️🧐"
   },
   "contextMenuTitle": {
     "message": "Traduire le Bullshit"
@@ -34,5 +34,9 @@
   },
   "popupChooseMethod": {
     "message": "Choisissez une méthode :"
+  },
+  "translateButton": {
+    "message": "Traduire le Bullshit",
+    "description": "Bouton pour traduire le texte bullshit"
   }
 }
