@@ -3,7 +3,8 @@
     "message": "Bullshit Translator"
   },
   "extensionDescription": {
-    "message": "Translate jargon, buzzwords, and other confusing text into plain language."
+    "message": "Cut through the nonsense to reveal what’s really being said.",
+    "description": "The description of the extension."
   },
   "contextMenuTitle": {
     "message": "Translate Bullshit"
@@ -34,5 +35,9 @@
   },
   "popupChooseMethod": {
     "message": "Choose one method:"
+  },
+  "translateButton": {
+    "message": "Translate Bullshit",
+    "description": "Button to translate bullshit text"
   }
 }

@@ -1,10 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Bullshit Translator",
+  "name": "__MSG_extensionName__",
   "version": "1.2",
-  "permissions": ["activeTab", "contextMenus", "scripting"],
+  "description": "__MSG_extensionDescription__",
+  "permissions": ["activeTab", "contextMenus", "scripting", "storage"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_popup": "popup.html",
