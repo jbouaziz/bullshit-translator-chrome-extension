@@ -12,8 +12,8 @@
  * @returns {Promise<void>}
  */
 
-async function processBullshitContent() {
-  const selection = window.getSelection().toString();
+async function processBullshitContent(propSelection) {
+  const selection = propSelection || window.getSelection().toString();
 
   if (!selection) {
     alert(chrome.i18n.getMessage("alertNoSelection"));
@@ -153,7 +153,7 @@ function showModal(before, translation) {
   const translateButton = document.createElement("button");
   translateButton.id = "bullshit-translator-translate-button";
   translateButton.textContent = chrome.i18n.getMessage("translateButton");
-  translateButton.style.marginTop = "16px";
+  translateButton.style.margin = "8px 0 0 0";
   translateButton.style.padding = "8px 16px";
   translateButton.style.backgroundColor = "#1a73e8";
   translateButton.style.color = "#ffffff";
@@ -163,6 +163,8 @@ function showModal(before, translation) {
   translateButton.style.fontSize = "14px";
   translateButton.style.fontWeight = "bold";
   translateButton.style.width = "calc(100% - 16px)";
+  translateButton.style.height = "auto";
+  translateButton.style.lineHeight = "normal";
 
   // Add hover effect
   translateButton.onmouseover = () => {

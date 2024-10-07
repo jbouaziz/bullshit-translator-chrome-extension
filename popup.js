@@ -1,3 +1,5 @@
+import Analytics from "./google-analytics.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const processPageButton = document.getElementById("processPage");
   if (processPageButton) {
@@ -24,4 +26,5 @@ document.addEventListener("DOMContentLoaded", () => {
 async function processPageContent() {
   const selection = window.getSelection().toString();
   window.processBullshitContent(selection);
+  Analytics.fireEvent("popup_translate_button_click");
 }

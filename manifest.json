@@ -3,9 +3,10 @@
   "name": "__MSG_extensionName__",
   "version": "1.2",
   "description": "__MSG_extensionDescription__",
-  "permissions": ["activeTab", "contextMenus", "scripting"],
+  "permissions": ["activeTab", "contextMenus", "scripting", "storage"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_popup": "popup.html",
